@@ -40,11 +40,27 @@ else {
         /** USER ADDED SETTINGS ( Pass into function/method call init ) **/
         var settings = $.extend( {
             // Defaults
-            date:1, //new Date().getDate();  Set Limit Day ( all days before this selectable )
+            date:24, //new Date().getDate();  Set Limit Day ( all days before this selectable )
             month:12, //new Date().getMonth()+1; Sets which month to set this up for (i.e. December)
             fadeTiming:300, // When you hover on a calendar day, this is the 'fade' animation speed
             daySlideDuration:500 // When you click a calendar day, this is the 'slide' animation speed
         }, options);
+        
+        var jsoncontent;
+        $.getJSON("content.json", function(content){
+          jsoncontent = content;
+          for (i = 1; i < 25; i++) { 
+          var index; 
+          if (i < 10) { 
+          index = "#thumb0" + i; }
+          else {
+          index = "#thumb" + i;}
+          
+        
+          $(index).attr("src",jsoncontent.content[i-1].src);
+          }
+          
+        });
         
         return this.each(function() {
 
@@ -139,8 +155,15 @@ else {
                             if (bRaiseOverlay) {
                                 var ordinal = $(this).find('strong').text();
                                 var selectedDay = '#day'+ordinal;
-                                var selectedDayCode = $(selectedDay).html();
+                               // var selectedDayCode = $(selectedDay).html();
+                              var selectedDate = "December ".concat(ordinal);
+                              var selectedDayCode =   "<div class=\"right\"> <hgroup> <h2>".concat(selectedDate, "</h2> <h3>", jsoncontent.content[Number(ordinal)-1].title,"</h3> </hgroup> <p>", jsoncontent.content[Number(ordinal)-1].text,"</p> </div><div <div class=\"left\"> \
+                                <a href=\"#\" target=\"_blank\"><img src=\"", jsoncontent.content[Number(ordinal)-1].src, "\" width=\"356\"  alt=\"\"/></a> \
+                            </div>")
+                                  
+                      
                                 
+                                //selectedDayCode += jsoncontent.content[1].title;
                                 $(this).PINT_showOverlay(selectedDayCode);
                             }
                         })
