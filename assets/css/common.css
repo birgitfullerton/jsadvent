@@ -1,4 +1,4 @@
-/* HTML5 ADVENT | ZingChart (www.zingchart.com) | PINT (www.pint.com) */
+
 
 /* BASIC ELEMENTS
 ------------------------------------------------------------------------------------- */
@@ -11,7 +11,7 @@ table, th, td { margin:0; }
 
 /* HTML/BODY */
 html { min-height:100%; }
-body { min-width:1024px; color:#333; font-size:14px; line-height:18px; font-family:helvetica,sans-serif; text-align:center; background-image: url(../images/bg-body.jpg); background-color:#393637; background-repeat:repeat-y; background-position:50% 0; }
+body { min-width:1024px; color:#333; font-size:14px; line-height:18px; font-family:helvetica,sans-serif; text-align:center; background-image: url(../images/adventbg.jpg); background-color:#393637; background-size: cover; /*background-repeat:repeat-y; background-position:50% 0;*/ }
 
 /* LINKS */
 a:link { color:#02bab5; text-decoration:none; }
@@ -20,18 +20,19 @@ a:hover, a:active { color:#02bab5; text-decoration:underline; }
 a img { border:0; }
 
 /* HEADLINES */
-h1 { margin:0 0 10px; color:#b2b2b2; font:bold 30px/30px helvetica,sans-serif; text-shadow:1px 1px 4px #000; }
+h1 { margin:0 0 10px; color:#d2d2d2; font:bold 30px/30px helvetica,sans-serif; text-shadow:1px 1px 4px #000; }
 h1.headline { margin:0 0 3px; }
 h1.headline span { display:inline-block; }
 h2 { margin:0 0 2px; color:#000; font:normal 18px/20px helvetica,sans-serif; }
-h2.headline { margin:0 0 15px; color:#a8a8a8; font:normal 14px/16px 'FranklinGothicBook',helvetica,sans-serif; text-shadow:1px 1px 2px #000; }
+h2.headline { margin:0 0 15px; color:#ffffff; font:normal 18px/20px 'FranklinGothicBook',helvetica,sans-serif; text-shadow:2px 2px 2px #555 ; }
 h3 { margin:0 0 7px; color:#666; font:normal 16px/18px helvetica,sans-serif; }
 h4{ margin:0 0 2px; color:#000; font:normal 18px/20px helvetica,sans-serif; }
 /* -- H1 SPAN colors */
-.color1 { color:#b2e205; }
-.color2 { color:#ff3301; }
-.color3 { color:#b70000; }
-.color4 { color:#02bab5; }
+.color1 { color:#99CC66; }
+.color2  { color:#e2e205; }
+.color3 { color:#CC3333; }
+.color4   { color:#99CC66; }
+.color5  { color:#CC3333; } 
 
 
 /* WRAPPER
@@ -86,14 +87,14 @@ h4{ margin:0 0 2px; color:#000; font:normal 18px/20px helvetica,sans-serif; }
 .component-calendar li { position:relative; width:126px; height:120px; float:left; display:inline; overflow:hidden; list-style:none; color:#4f4f4f; z-index:10; }
 .component-calendar .active:hover { box-shadow:0 0 9px #222; -moz-box-shadow:0 0 9px #222; -webkit-box-shadow:0 0 9px #222; }
 .component-calendar .remove-css:hover { box-shadow:0 0 0; -moz-box-shadow:0 0 0; -webkit-box-shadow:0 0 0; }
-.component-calendar .indent-3 { margin-left:378px; }
+.component-calendar .indent-2 { margin-left:252px; }
 .component-calendar a { position:relative; width:126px; height:120px; display:block; color:#4f4f4f; cursor:default; }
 .component-calendar a:hover { opacity:.14; text-decoration:none; background:#000 url(../images/bg-sprite-24.png) no-repeat 0 -120px; }
 .component-calendar .active a:hover { opacity:1; background:none; cursor:pointer; }
 .component-calendar .active a:hover .day { -moz-border-radius:5px; border-radius:5px; }
 /* -- 'Day' element */
 .component-calendar .day { position:absolute; top:0; left:0; width:126px; height:120px; display:block; font:bold 56px/58px helvetica,sans-serif; z-index:20; }
-.component-calendar .day strong{ position:absolute; top:0; left:0; padding:29px 6px 0; width:114px; height:91px; color:#4f4f4f; font:bold 56px/58px helvetica,sans-serif; z-index:20; }
+.component-calendar .day strong{ position:absolute; top:0; left:0; padding:29px 6px 0; width:114px; height:120px; color:#e2e205; font:bold 56px/58px helvetica,sans-serif; z-index:20; }
 .component-calendar .active a:hover .day strong { background:url(../images/bg-sprite-24.png) no-repeat 0 0; }
 .component-calendar .day span { position:absolute; top:0; left:0; width:126px; height:120px; opacity:0; z-index:15; -moz-border-radius:5px; border-radius:5px; }
 /* -- Normal, JS-Disabled Hover */
@@ -104,7 +105,7 @@ h4{ margin:0 0 2px; color:#000; font:normal 18px/20px helvetica,sans-serif; }
 /* -- JS-Enabled 'Fade In/Out' Hover */
 .component-calendar .hover { background:none !important; }
 .component-calendar .hover span { background:#000 url(../images/bg-sprite-24.png) no-repeat 0 -120px; }
-.component-calendar .active span { background:none; }
+.component-calendar .active span {background:none; }
 .component-calendar .color1 .hover span { background-color:#b2e205; background:-moz-linear-gradient(100% 100% 90deg, #8dbb01, #b2e205); background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#b2e205), to(#8dbb01)); }
 .component-calendar .color2 .hover span { background-color:#ffd427; background:-moz-linear-gradient(100% 100% 90deg, #ffa800, #ffd427); background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffd427), to(#ffa800)); }
 .component-calendar .color3 .hover span { background-color:#00cccc; background:-moz-linear-gradient(100% 100% 90deg, #01a09c, #00cccc); background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#00cccc), to(#01a09c)); }
@@ -112,9 +113,11 @@ h4{ margin:0 0 2px; color:#000; font:normal 18px/20px helvetica,sans-serif; }
 /* -- Content Element */
 .component-calendar .content { position:relative; margin:0 0 0 126px; width:126px; height:120px; display:block; background:#332f30; z-index:30; }
 .component-calendar img { margin:0 0 8px; display:block; }
-.component-calendar small { position:absolute; top:4px; left:7px; color:#fff; font-size:24px; line-height:24px; z-index:40; }
+.component-calendar small { position:absolute; top:4px; left:7px; color:#e2e205;  text-shadow:1px 1px 2px #000; background: none; font-size:24px; line-height:24px; z-index:40; }
 .component-calendar strong { padding:0 0 0 7px; display:block; color:#fff; font:normal 12px/12px helvetica,sans-serif; }
 
+.picture { width: 126px; height: 120px; }
+.picture div {  margin: auto; border: 2px #000; height: 120px; background: #000; background-repeat: no-repeat; background-size: contain; background-position: 50% 50%; }
 
 /* OVERLAY BOX
 ------------------------------------------------------------------------------------- */
@@ -127,14 +130,15 @@ h4{ margin:0 0 2px; color:#000; font:normal 18px/20px helvetica,sans-serif; }
 .component-box .close span { position:absolute; top:0; left:0; width:10px; height:10px; overflow:hidden; background:url(../images/bg-sprite.png) no-repeat 0 -180px; cursor:pointer; }
 /* -- Overlay Specifics */
 #overlay-mask { position:absolute;z-index:999;background-color:#000;display:none;top:0px;left:0px; }
-#overlay-main { position:absolute; top:0; left:0; margin:0 auto; text-align:left; background:#d9d9d9 url(../images/bg-overlay-main.png) repeat-x 0 0; box-shadow:0 0 19px #000; -moz-box-shadow:0 0 19px #000; -webkit-box-shadow:0 0 19px #000; z-index:1000; }
+#overlay-main { position:absolute; top:0; left:0; margin:0 auto; margin: auto; left: 0; width: 650px; right: 0; text-align:left; background:#d9d9d9 url(../images/bg-overlay-main.png) repeat-x 0 0; box-shadow:0 0 19px #000; -moz-box-shadow:0 0 19px #000; -webkit-box-shadow:0 0 19px #000; z-index:1000; }
 /*#overlay-main { position:absolute; top:0; left:0; margin:0 auto; padding:10px; width:666px; height:410px; text-align:left; background:#d9d9d9 url(../images/bg-overlay-main.png) repeat-x 0 0; box-shadow:0 0 19px #000; -moz-box-shadow:0 0 19px #000; -webkit-box-shadow:0 0 19px #000; z-index:1000; }*/
 #overlay-body { overflow:hidden; margin:0 auto; padding:10px; }
 /*#overlay-body { position:absolute; top:0;left:0; margin:0 auto; padding:10px; }*/
 #overlay-close { position:absolute; top:10px; right:10px; width:30px; height:30px; overflow:hidden; background:url(../images/bg-sprite.png) no-repeat 0 -210px; cursor:pointer; }
 #overlay-close span { position:absolute; top:0; left:0; width:30px; height:30px; display:block; background:url(../images/bg-sprite.png) no-repeat 0 -210px; cursor:pointer; }
-#overlay-main .left { width:356px; float:left; display:inline; }
-#overlay-main .right { margin-left:20px; padding:19px 0 0; width:264px; float:right; display:inline; word-wrap:break-word;}
+#overlay-main .left { width:356px; float:right; display:inline; padding-right: 30px; }
+/*#overlay-main .right { margin-left:20px; padding:19px 0 0; width:264px; float:right; display:inline; word-wrap:break-word;} */
+#overlay-main .right { width: 200px; float:left; display:inline; word-wrap:break-word; position: absolute; bottom: 10px; margin-left: 20px;}
 #overlay-main p { margin:0 0 20px; }
 #overlay-main .caption { margin:4px 0 0; }
 

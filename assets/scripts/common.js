@@ -36,15 +36,19 @@ else {
     // Sets Action on calendar click
     // Example with default overrides: $('ul.component-calendar').PINT_calendar({ date:12 });
     $.fn.PINT_calendar = function(options) {
-        
         /** USER ADDED SETTINGS ( Pass into function/method call init ) **/
         var settings = $.extend( {
             // Defaults
-            date:24, //new Date().getDate();  Set Limit Day ( all days before this selectable )
-            month:12, //new Date().getMonth()+1; Sets which month to set this up for (i.e. December)
+            date: new Date().getDate(), // Set Limit Day ( all days incl. and before this selectable )
+            month: 12,//new Date().getMonth(); Sets which month to set this up for (i.e. December)
             fadeTiming:300, // When you hover on a calendar day, this is the 'fade' animation speed
             daySlideDuration:500 // When you click a calendar day, this is the 'slide' animation speed
         }, options);
+        
+        var splitPath = function (str) {
+         return str.split('\\').pop().split('/').pop();
+        }
+        
         
         var jsoncontent;
         $.getJSON("content.json", function(content){
@@ -55,11 +59,12 @@ else {
           index = "#thumb0" + i; }
           else {
           index = "#thumb" + i;}
-          
-        
-          $(index).attr("src",jsoncontent.content[i-1].src);
+          str = jsoncontent.content[i-1].src.slice(0, -4);
+          thumb_pic =  splitPath(str) + "_thumb"; 
+          thumb_path = "/media/thumbs/"
+          new_file = thumb_path + thumb_pic;
+          $(index).css("background-image","url(../.." + new_file + ".jpg)");
           }
-          
         });
         
         return this.each(function() {
@@ -157,9 +162,15 @@ else {
                                 var selectedDay = '#day'+ordinal;
                                // var selectedDayCode = $(selectedDay).html();
                               var selectedDate = "December ".concat(ordinal);
-                              var selectedDayCode =   "<div class=\"right\"> <hgroup> <h2>".concat(selectedDate, "</h2> <h3>", jsoncontent.content[Number(ordinal)-1].title,"</h3> </hgroup> <p>", jsoncontent.content[Number(ordinal)-1].text,"</p> </div><div <div class=\"left\"> \
-                                <a href=\"#\" target=\"_blank\"><img src=\"", jsoncontent.content[Number(ordinal)-1].src, "\" width=\"356\"  alt=\"\"/></a> \
+                              if (jsoncontent.content[Number(ordinal)-1].type == "image") {
+                              var selectedDayCode =   "<div class=\"right\"> <hgroup> <h2>".concat(selectedDate, "</h2> <h3>", jsoncontent.content[Number(ordinal)-1].title,"</h3> </hgroup> <p>", jsoncontent.content[Number(ordinal)-1].text,"</p> </div><div class=\"left\"> \
+                                <div style=\"background-repeat: no-repeat; background-size: contain; background-position: 50% 50%; height: 280px; background-image: url(../..", jsoncontent.content[Number(ordinal)-1].src, ");\">&nbsp;</div> \
+                            </div>")}
+                            else {
+                             var selectedDayCode =   "<div class=\"right\"> <hgroup> <h2>".concat(selectedDate, "</h2> <h3>", jsoncontent.content[Number(ordinal)-1].title,"</h3> </hgroup> <p>", jsoncontent.content[Number(ordinal)-1].text,"</p> </div><div class=\"left\"> \
+                                <video src=\"", jsoncontent.content[Number(ordinal)-1].src, "\" width=\"320\" controls autoplay alt=\"\"/> \
                             </div>")
+                            }
                                   
                       
                                 
@@ -260,7 +271,7 @@ else {
                 }));
             }
 
-            var closeCode = '<div id="overlay-close">Close<span>&nbsp;</span></div>';    
+            var closeCode = '<div id="overlay-close" onClick="$(\'video\').each(function(){$(this).get(0).pause();});">Close<span>&nbsp;</span></div>';    
         
             $('#overlay-body').html(content+closeCode);
         
@@ -281,8 +292,8 @@ else {
     
         $('#overlay-main')
             .css("position","absolute")
-            .css("top", (($(window).height() - $('#overlay-main').outerHeight()) / 2) + $(window).scrollTop() + "px")
-            .css("left", (($(window).width() - $('#overlay-main').outerWidth()) / 2) + $(window).scrollLeft() + "px");    
+            .css("top", (($(window).height() - $('#overlay-main').outerHeight()) / 2) + $(window).scrollTop() + "px");
+            //.css("left", (($(window).width() - $('#overlay-main').outerWidth()) / 2) + $(window).scrollLeft() + "px");    
     
     }
 
@@ -452,7 +463,7 @@ $(document).ready(function() {
     $('ul.component-calendar').PINT_calendar();
     
     /** ADD 'SHARE' MENU *****/
-    $('#header').PINT_share();
+    //$('#header').PINT_share();
 
     /** HEADLINE ANIMATION *****/
     $('#headline-first').PINT_headlineFade();
